@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: appsmith
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: letsencrypt
+    kubernetes.io/tls-acme: "true"
+spec:
+  tls:
+  - hosts:
+    - aicollaboration.com
+    secretName: tls-latest-aiproduct.io
+  rules:
+  - host: appsmith.aicollaboration.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: appsmith
+          servicePort: 80
+ 

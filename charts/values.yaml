@@ -1,0 +1,5 @@
+tag: latest
+
+appsmith:
+    replicaCount: 1
+    image: appsmith/appsmith-ce

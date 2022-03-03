@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appsmith
+spec:
+  replicas: {{ .Values.appsmith.replicaCount }}
+  selector:
+    matchLabels:
+      app: appsmith
+  template:
+    metadata:
+      labels:
+        app: appsmith
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: appsmith
+          image: "{{ .Values.appsmith.image }}:{{ .Values.tag }}"
+          ports:
+          - containerPort: 80
+
