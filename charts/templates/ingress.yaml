@@ -10,7 +10,7 @@ spec:
   tls:
   - hosts:
     - aicollaboration.com
-    secretName: tls-latest-aiproduct.io
+    secretName: tls-latest-certificate
   rules:
   - host: appsmith.aicollaboration.com
     http:
